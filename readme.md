@@ -21,4 +21,4 @@ Cameroon as a tourist destination — "Africa in Miniature."
 [View the live website](your-github-pages-link-here)
 
 ## Author
-[Abie Cindy Echembe] — Final Year Project / Coursework
+[Your Name] — Final Year Project / Coursework
