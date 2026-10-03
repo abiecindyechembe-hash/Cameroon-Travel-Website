@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Cameroon | Travel Packages</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      background:
+        url('https://th.bing.com/th/id/OIP.0WQzQ44d6bW07-KYefPXNAHaEJ?w=322&h=181&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3') center center / cover no-repeat fixed;
+      background-color: #dfe7d2;
+    }
+
+    .packages-page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .page-hero {
+      background: linear-gradient(135deg, rgba(18, 40, 30, 0.94), rgba(28, 61, 46, 0.88));
+      color: #fff;
+      border-radius: 22px 22px 0 0;
+      padding: 3rem 2rem 2.2rem;
+      box-shadow: 0 16px 32px rgba(28, 61, 46, 0.18);
+      border: 1px solid rgba(201, 162, 75, 0.25);
+    }
+
+    .page-hero h1 {
+      color: #fff;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      margin-bottom: 0.8rem;
+      line-height: 1.1;
+    }
+
+    .page-hero p {
+      color: #edf2ea;
+      max-width: 680px;
+      font-size: 1.05rem;
+      margin: 0;
+    }
+
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.6rem;
+      padding: 2rem 0 0.5rem;
+    }
+
+    .package-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(28, 61, 46, 0.08);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 25px rgba(28, 61, 46, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .package-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 30px rgba(28, 61, 46, 0.12);
+    }
+
+    .package-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .package-card .card-body {
+      padding: 1.35rem 1.2rem 1.4rem;
+    }
+
+    .package-card .badge {
+      display: inline-block;
+      background: rgba(201, 162, 75, 0.18);
+      color: var(--forest);
+      padding: 0.38rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .package-card h2 {
+      font-size: 1.65rem;
+      margin: 0.9rem 0 0.2rem;
+      color: var(--forest);
+      padding-bottom: 0;
+    }
+
+    .package-card h2::after {
+      display: none;
+    }
+
+    .package-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--forest);
+      margin-bottom: 0.8rem;
+    }
+
+    .package-card p {
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+    }
+
+    .package-card ul {
+      margin: 0 0 1rem 1.1rem;
+      color: var(--ink);
+      font-size: 0.94rem;
+      line-height: 1.7;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(28, 61, 46, 0.1);
+    }
+
+    .price {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.8rem;
+      color: var(--terracotta);
+      font-weight: 700;
+    }
+
+    .price small {
+      font-family: 'Lato', Arial, sans-serif;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .package-card .map-btn {
+      margin-top: 0;
+      background: var(--forest);
+    }
+
+    .package-card .map-btn:hover {
+      background: var(--terracotta);
+    }
+
+    .section-panel {
+      margin-top: 2.5rem;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(28, 61, 46, 0.08);
+      border-radius: 18px;
+      padding: 1.6rem 1.4rem 1.3rem;
+      box-shadow: 0 10px 24px rgba(28, 61, 46, 0.05);
+    }
+
+    .section-panel h2 {
+      margin-bottom: 1rem;
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .compare-table th,
+    .compare-table td {
+      padding: 0.95rem 1rem;
+      border-bottom: 1px solid rgba(28, 61, 46, 0.09);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .compare-table th {
+      background: var(--forest);
+      color: var(--gold-light);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cta-strip {
+      margin-top: 2.6rem;
+      background: linear-gradient(135deg, rgba(201, 162, 75, 0.18), rgba(28, 61, 46, 0.08));
+      border: 1px solid rgba(201, 162, 75, 0.25);
+      border-radius: 18px;
+      padding: 1.7rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-strip h3 {
+      margin: 0;
+      color: var(--forest);
+      font-size: 1.55rem;
+    }
+
+    .cta-strip p {
+      margin: 0.25rem 0 0;
+      color: var(--ink-soft);
+      font-weight: 600;
+    }
+
+    .cta-strip a {
+      display: inline-block;
+      padding: 0.9rem 1.5rem;
+      background: var(--terracotta);
+      color: #fff;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .cta-strip a:hover {
+      background: var(--forest);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 640px) {
+      .page-hero {
+        padding: 2.2rem 1.1rem 1.6rem;
+      }
+
+      .cta-strip {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="logo">
+      <img src="https://th.bing.com/th/id/OIP.Ls9zZM14tyIjEVGBWacheQHaHa?w=128&h=150&c=6&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Cameroon Logo" width="100" height="100">
+    </div>
+    <div class="header-inner">
+      <div class="site-title"><strong>Discover Cameroon</strong></div>
+      <div class="tagline">Africa in Miniature - one country, every landscape.</div>
+    </div>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="activities.html">Activities</a></li>
+        <li><a href="packages.html" class="active">Travel Packages</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="packages-page">
+    <section class="page-hero">
+      <h1>Travel Packages</h1>
+      <p>Choose from carefully planned routes that blend wildlife, culture, coastlines, and highland charm into a seamless Cameroon experience.</p>
+    </section>
+
+    <section class="package-grid">
+      <article class="package-card">
+        <img src="https://images.pexels.com/photos/26872199/pexels-photo-26872199.jpeg" alt="Mount Cameroon package">
+        <div class="card-body">
+          <span class="badge">Classic</span>
+          <h2>Mount Cameroon Trek</h2>
+          <div class="package-meta">
+            <span>4 Days</span>
+            <span>2-4 Guests</span>
+          </div>
+          <p>Ideal for adventurous travelers seeking volcanic scenery, cloud forests, and a rewarding summit climb.</p>
+          <ul>
+            <li>Guided trekking route</li>
+            <li>Hotel and transfers</li>
+            <li>Breakfast and local guide</li>
+          </ul>
+          <div class="price-row">
+            <div class="price">25,000 FCFA <small>per person</small></div>
+            <a class="map-btn" href="contact.html">Book Now</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card">
+        <img src="https://images.pexels.com/photos/35846256/pexels-photo-35846256.jpeg" alt="Coast and wildlife package">
+        <div class="card-body">
+          <span class="badge">Best Seller</span>
+          <h2>Coast & Wildlife</h2>
+          <div class="package-meta">
+            <span>6 Days</span>
+            <span>Family</span>
+          </div>
+          <p>Enjoy black-sand beaches, forest wildlife, and a calm rhythm of scenic coastal travel.</p>
+          <ul>
+            <li>Limbe beach stay</li>
+            <li>Wildlife Centre visit</li>
+            <li>Kribi and Lobé waterfalls</li>
+          </ul>
+          <div class="price-row">
+            <div class="price">50,000 FCFA <small>per person</small></div>
+            <a class="map-btn" href="contact.html">Book Now</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card">
+        <img src="https://media.istockphoto.com/id/2231391023/photo/picturesque-small-fishing-village-kyleakin-on-isle-of-skye-scotland-in-late-afternoon-sunlight.jpg?b=1&s=612x612&w=0&k=20&c=gJhMw9L-VZxJcCNs3VMHto2Ev-jbKaO8My17UKrZvTg=" alt="Culture and highlands package">
+        <div class="card-body">
+          <span class="badge">Culture</span>
+          <h2>Highlands & Culture</h2>
+          <div class="package-meta">
+            <span>5 Days</span>
+            <span>Couples</span>
+          </div>
+          <p>Explore Cameroon’s rolling highlands, royal palaces, markets, and traditional communities.</p>
+          <ul>
+            <li>Bafoussam and Bamenda</li>
+            <li>Royal palace cultural tour</li>
+            <li>Local market and culinary stops</li>
+          </ul>
+          <div class="price-row">
+            <div class="price">150,000 FCFA <small>per person</small></div>
+            <a class="map-btn" href="contact.html">Book Now</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section-panel">
+      <h2>Package Comparison</h2>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Package</th>
+            <th>Focus</th>
+            <th>Ideal For</th>
+            <th>Includes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mount Cameroon Trek</td>
+            <td>Adventure & scenery</td>
+            <td>Hikers and nature lovers</td>
+            <td>Guide, transfers, lodging, meals, support crew</td>
+          </tr>
+          <tr>
+            <td>Coast & Wildlife</td>
+            <td>Beach + animals</td>
+            <td>Families & relaxed travelers</td>
+            <td>Accommodation, park visits, local transport</td>
+          </tr>
+          <tr>
+            <td>Highlands & Culture</td>
+            <td>Culture + landscapes</td>
+            <td>Couples & cultural explorers</td>
+            <td>Guided tours, palace visits, city-to-city transfers</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section-panel">
+      <h2>What’s Included</h2>
+      <ul>
+        <li>Daily breakfast and selected local meals</li>
+        <li>Airport or city transfer coordination</li>
+        <li>Handpicked accommodation in trusted partner hotels</li>
+        <li>Professional local guides and transport support</li>
+        <li>Flexible route planning based on your travel dates</li>
+      </ul>
+    </section>
+
+    <div class="cta-strip">
+      <div>
+        <h3>Planning a custom itinerary?</h3>
+        <p>Tell us your dates, pace, and interests and we’ll build a route around your dream trip.</p>
+      </div>
+      <a href="contact.html">Plan My Trip</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">Explore Cameroon</div>
+        <p>Individual or small-group travels across Cameroon’s coast, rainforests, grassfields, and sahel north, planned by people based in each region.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Regions</h4>
+        <ul>
+          <li><a href="https://en.wikipedia.org/wiki/Geography_of_Cameroon">The Coast</a></li>
+          <li><a href="https://www.britannica.com/place/Cameroon/Plant-and-animal-life">Rainforests</a></li>
+          <li><a href="https://fr.wikipedia.org/wiki/Grassland_(Cameroun)">Grassfields</a></li>
+          <li><a href="https://fr.wikipedia.org/wiki/Sahel_(Cameroun)">Sahel north</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://en.wikipedia.org/wiki/Cameroon">About Cameroon</a></li>
+          <li><a href="https://www.camerooncarrentals.com/cameroon-divers-on-hire-douala-and-yaounde/">Our drivers</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Plan a trip</h4>
+        <ul>
+          <li><a href="https://globalbushtratour.com/blog/getting-around-cameroon-a-complete-transport-guide">Fixed Routes</a></li>
+          <li><a href="https://www.rome2rio.com/s/Cameroon">Custom Itinerary</a></li>
+          <li><a href="group-bookings.html">Group / single bookings</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p><span>2026 Explore Cameroon. All rights reserved.</span></p>
+      <p>
+        <a href="contact.html">Contact us</a> |
+        <a href="https://www.instagram.com/travelcameroon/">Follow us on Instagram</a> |
+        <a href="https://web.facebook.com/photo/?fbid=551495800106655&set=a.551495750106660">Follow us on Facebook</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -4,91 +4,1103 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Explore Cameroon | Destinations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ============================================
+   Explore Cameroon — Destinations page
+   Palette drawn from the flag and the land:
+   forest green, savanna gold, and terracotta clay,
+   on a warm sand background.
+   ============================================ */
+
+:root {
+  --forest: #0B5D3B;
+  --forest-dark: #073D27;
+  --gold: #E4A72E;
+  --clay: #B3392C;
+  --ocean: #1D6E77;
+  --sand: #FBF6EC;
+  --paper: #FFFFFF;
+  --ink: #21261F;
+  --ink-soft: #5B6459;
+  --line: #E4DCC8;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Work Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background:
+    url('https://th.bing.com/th/id/OIP.0WQzQ44d6bW07-KYefPXNAHaEJ?w=322&h=181&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3') center center / cover no-repeat fixed;
+  background-color: #dfe7d2;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+a { color: inherit; }
+
+img { max-width: 100%; display: block; }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest) 55%, var(--ocean) 100%);
+  color: var(--paper);
+  padding: 64px 24px 88px;
+  overflow: hidden;
+}
+
+.hero-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-kicker {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin: 0 0 10px;
+  font-weight: 600;
+}
+
+.site-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  margin: 0 0 14px;
+  line-height: 1.05;
+}
+
+.tagline {
+  font-size: 1.05rem;
+  color: #EAF3EC;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.hero-terrain {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  fill: var(--sand);
+}
+
+/* ---------- Nav ---------- */
+
+.main-nav {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.main-nav a {
+  display: inline-block;
+  padding: 16px 14px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  border-bottom: 2px solid transparent;
+}
+
+.main-nav a:hover { color: var(--forest); }
+
+.main-nav a.active {
+  color: var(--forest);
+  border-bottom-color: var(--gold);
+  font-weight: 600;
+}
+
+/* ---------- Jump panel (overlaps hero, like a search card) ---------- */
+
+.jump-panel {
+  max-width: 900px;
+  margin: -40px auto 0;
+  background: var(--paper);
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(7, 61, 39, 0.18);
+  padding: 20px 24px;
+  position: relative;
+  z-index: 5;
+}
+
+.jump-label {
+  margin: 0 0 10px;
+  font-size: 0.8rem;
+  text-transform: none;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+.jump-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.jump-links a {
+  text-decoration: none;
+  background: var(--sand);
+  border: 1px solid var(--line);
+  color: var(--forest-dark);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.jump-links a:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--forest-dark);
+}
+
+/* ---------- Page layout ---------- */
+
+.page-layout {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 36px 24px 60px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.filter-rail {
+  position: sticky;
+  top: 76px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filter-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.filter-card h2 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin: 0 0 8px;
+  color: var(--forest-dark);
+}
+
+.filter-card > p {
+  margin: 0 0 14px;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.filter-note p { margin: 0; }
+
+.region-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.region-list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.region-list a:hover { color: var(--forest); }
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.content-col { min-width: 0; }
+
+.page-intro {
+  margin-bottom: 28px;
+}
+
+.page-intro h2 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  margin: 0 0 8px;
+  color: var(--forest-dark);
+}
+
+.page-intro p {
+  margin: 0;
+  color: var(--ink-soft);
+  max-width: 60ch;
+}
+
+/* ---------- Region sections & carousels ---------- */
+
+.destination-carousel {
+  margin-bottom: 44px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.destination-carousel:last-child { border-bottom: none; }
+
+.region-heading {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--forest-dark);
+  margin: 0 0 16px;
+  scroll-margin-top: 90px;
+  display: inline-block;
+  padding-bottom: 4px;
+  border-bottom: 3px solid var(--gold);
+}
+
+.destination-slides {
+  position: relative;
+}
+
+.destination-slide {
+  display: none;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(33, 38, 31, 0.06);
+}
+
+.destination-slide.active {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+}
+
+.slide-media {
+  position: relative;
+  min-height: 220px;
+  background: var(--line);
+}
+
+.slide-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.price-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--clay);
+  color: var(--paper);
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+.destination-copy {
+  padding: 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.destination-copy h2 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin: 0;
+  color: var(--ink);
+}
+
+.destination-copy > p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  font-size: 0.85rem;
+  color: var(--forest-dark);
+  font-weight: 500;
+}
+
+.fine-note {
+  font-size: 0.82rem !important;
+  color: var(--ink-soft) !important;
+  font-style: italic;
+}
+
+.map-btn {
+  align-self: flex-start;
+  margin-top: 6px;
+  text-decoration: none;
+  background: var(--forest);
+  color: var(--paper);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 18px;
+  border-radius: 8px;
+  transition: background 0.15s ease;
+}
+
+.map-btn:hover { background: var(--forest-dark); }
+
+.carousel-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.carousel-prev,
+.carousel-next {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--forest-dark);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+  background: var(--gold);
+  color: var(--forest-dark);
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  background: var(--forest-dark);
+  color: #D9E6DC;
+  text-align: center;
+  padding: 28px 24px;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+footer p { margin: 4px 0; }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .page-layout {
+    grid-template-columns: 1fr;
+  }
+  .filter-rail {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .filter-card { flex: 1 1 240px; }
+}
+
+@media (max-width: 640px) {
+  .hero { padding: 48px 20px 72px; }
+  .jump-panel { margin: -32px 16px 0; padding: 16px 18px; }
+  .destination-slide.active {
+    grid-template-columns: 1fr;
+  }
+  .slide-media { min-height: 200px; }
+  .main-nav ul { justify-content: center; }
+}
+  </style>
 </head>
 <body>
 
-  <header>
-    <div class="site-title"> Explore Cameroon</div>
-    <div class="tagline">Africa in Miniature — one country, every landscape</div>
+  <header class="site-header">
+    <div class="logo">
+      <img src="https://th.bing.com/th/id/OIP.Ls9zZM14tyIjEVGBWacheQHaHa?w=128&h=150&c=6&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Cameroon Logo" width="100" height="100">
+    </div>
+    <div class="header-inner">
+      <div class="site-title"><strong>Discover Cameroon</strong></div>
+      <div class="tagline">Africa in Miniature - one country, every landscape.</div>
+    </div>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html" class="active">Destinations</a></li>
+        <li><a href="activities.html">Activities</a></li>
+        <li><a href="packages.html">Travel Packages</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <nav>
-    <ul >
-      <li><a href="index.html">Home</a></li>
-      <li><a href="destinations.html" class="active">Destinations</a></li>
-      <li><a href="activities.html">Activities</a></li>
-      <li><a href="packages.html">Travel Packages</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-  </nav>
+  <div class="jump-panel">
+    <p class="jump-label">Jump to a region</p>
+    <div class="jump-links">
+      <a href="#Yaounde">Yaoundé</a>
+      <a href="#Kribi">Kribi</a>
+      <a href="#Bamenda">Bamenda</a>
+      <a href="#Buea">Buea</a>
+      <a href="#Bafoussam">Bafoussam</a>
+      <a href="#Douala">Douala</a>
+    </div>
+  </div>
 
-  <main>
-    <h1>Top Tourist Attractions in Cameroon</h1>
-    <p>Here are five must-see destinations spanning Cameroon's coast, highlands, north and west.</p>
+  <main class="page-layout">
 
-    <section class="card-grid">
-      <article class="card">
-        <img src="https://i.pinimg.com/1200x/07/e3/0a/07e30a643c049d44bda0faf1dc0e9486.jpg" alt="Mount Cameroon volcano peak" width="400" height="200">
-        <div class="card-body">
-          <h2>Mount Cameroon</h2>
-          <p class="meta">Best time to visit: November–February (dry season)</p>
-          <p>West Africa's highest peak (4,040m) and an active volcano near Buea, popular
-             for multi-day treks and the annual "Race of Hope" mountain race.</p>
-          <p><a href="https://maps.google.com/?q=Mount+Cameroon" target="_blank" rel="noopener">View on Google Maps</a></p>
+    <aside class="filter-rail">
+      <div class="filter-card">
+        <h2>Plan by region</h2>
+        <p>Six regions, each with its own character. Pick a starting point below or scroll through all of them.</p>
+        <ul class="region-list">
+          <li><a href="#yaounde"><span class="dot" style="background:var(--forest)"></span>Yaoundé — capital &amp; culture</a></li>
+          <li><a href="#kribi"><span class="dot" style="background:var(--ocean)"></span>Kribi — coast &amp; waterfalls</a></li>
+          <li><a href="#bamenda"><span class="dot" style="background:var(--gold)"></span>Bamenda — highlands &amp; palaces</a></li>
+          <li><a href="#buea"><span class="dot" style="background:var(--clay)"></span>Buea — mountain &amp; trails</a></li>
+          <li><a href="#bafoussam"><span class="dot" style="background:var(--forest)"></span>Bafoussam — crater lakes</a></li>
+          <li><a href="#douala"><span class="dot" style="background:var(--ocean)"></span>Douala — city life</a></li>
+        </ul>
+      </div>
+      <div class="filter-card filter-note">
+        <h2>Before you go</h2>
+        <p>Prices are shown in CFA francs (XAF) and are approximate. Dry season, roughly November to February, gives the clearest travel conditions across most regions.</p>
+      </div>
+    </aside>
+
+    <div class="content-col">
+      <div class="page-intro">
+        <h2>Top tourist attractions in Cameroon</h2>
+        <p>Five must-see stops in each of six regions, spanning the coast, highlands, north-west, and central Cameroon.</p>
+      </div>
+
+      <section class="destination-carousel" id="yaounde" aria-label="Yaoundé destination carousel">
+        <h3 class="region-heading">Yaoundé</h3>
+        <div class="destination-slides">
+          <article class="destination-slide active">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.zv8NOCpGvG_Ym3JF8fE-5AHaE8?w=278&h=186&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="National Museum in Yaoundé">
+              <span class="price-badge">5,000 XAF</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Yaoundé: National Museum</h2>
+              <p>Take a guided tour through Cameroon's sculptures, cultural objects, and history.</p>
+              <div class="meta-row">
+                <span>📅 Weekday mornings</span>
+                <span>⏱ 1–2 hours</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=National+Museum+Yaounde" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.1ISXw5yMdEGBLrr0SDNMKQHaFj?w=256&h=193&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Reunification Monument in Yaoundé">
+              <span class="price-badge">~2,000 XAF</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Yaoundé: Reunification Monument</h2>
+              <p>Climb the spiral monument for city views and visit its historical gallery.</p>
+              <div class="meta-row">
+                <span>📅 Early morning or late afternoon</span>
+                <span>⏱ 1–2 hours</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Reunification+Monument+Yaounde" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.yP7hpeGphD9qUdwjCb2cEQHaHQ?w=148&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="I Love My Country Monument in Yaoundé">
+              <span class="price-badge">Free</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Yaoundé: I Love My Country Monument</h2>
+              <p>A photo-friendly sculpture roundabout and an easy stop while exploring the city.</p>
+              <div class="meta-row">
+                <span>📅 Late afternoon</span>
+                <span>⏱ 30–45 minutes</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=I+Love+My+Country+Monument+Yaounde" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.CRQguBhD6jPkC3uiW5nMSwHaEJ?w=309&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Eco Park in Yaoundé">
+              <span class="price-badge">~2,000–5,000 XAF</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Yaoundé: Eco Park</h2>
+              <p>Enjoy a small zoo, water features, and a museum in a clean green setting.</p>
+              <div class="meta-row">
+                <span>📅 Morning or late afternoon</span>
+                <span>⏱ 2–3 hours</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Eco+Park+Yaounde" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.B4n1r6XMGjkiR0d94Eq21wHaEL?w=299&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Monument j'aime mon pays in Yaoundé">
+              <span class="price-badge">Free</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Yaoundé: Monument j'aime mon pays</h2>
+              <p>A central monument that lights up after dark, making it a memorable evening photo stop near the Hilton.</p>
+              <div class="meta-row">
+                <span>📅 After sunset</span>
+                <span>⏱ 30–60 minutes</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Monument+j%27aime+mon+pays+Yaounde" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
         </div>
-      </article>
-
-      <article class="card">
-        <img src="https://www.pinterest.com/pin/833940056036656923/" alt="Kribi black sand beach coastline" width="400" height="200">
-        <div class="card-body">
-          <h2>Kribi &amp; the Lobé Waterfalls</h2>
-          <p class="meta">Best time to visit: November–February</p>
-          <p>A relaxed coastal town with golden beaches, fresh seafood, and the rare Lobé
-             Waterfalls, where a river tumbles directly into the Atlantic Ocean.</p>
-          <p><a href="https://maps.google.com/?q=Limbe+Cameroon" target="_blank" rel="noopener">View on Google Maps</a></p>
+        <div class="carousel-controls">
+          <button class="carousel-prev" type="button" aria-label="Previous">‹</button>
+          <button class="carousel-next" type="button" aria-label="Next">›</button>
         </div>
-      </article>
+      </section>
 
-      <article class="card">
-        <img src="https://tse3.mm.bing.net/th/id/OIP.SxTox1THi8Yop0_fdhMD0gHaFN?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Waza National Park savannah with wildlife" width="400" height="200">
-        <div class="card-body">
-          <h2>Waza National Park</h2>
-          <p class="meta">Best time to visit: November–April (dry season, best game viewing)</p>
-          <p>A UNESCO Biosphere Reserve in the far north, home to elephants, giraffes,
-             lions and hundreds of bird species across open savannah.</p>
-          <p><a href="https://maps.google.com/?q=Waza+National+Park" target="_blank" rel="noopener">View on Google Maps</a></p>
+      <section class="destination-carousel" id="kribi" aria-label="Kribi and the Lobé Waterfalls destination carousel">
+        <h3 class="region-heading">Kribi &amp; the Lobé Waterfalls</h3>
+        <div class="destination-slides">
+          <article class="destination-slide active">
+            <div class="slide-media">
+              <img src="https://media.istockphoto.com/id/2197061690/photo/india-kerala-athirapally-falls.jpg?s=612x612&w=0&k=20&c=PIe6rTmqaW7V_NVaYibwUbEyntzEVinGPgeOp1pbZVQ=" alt="Chutes de la Lobé Waterfalls">
+              <span class="price-badge">1,000–2,000 XAF</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Chutes de la Lobé Waterfalls</h2>
+              <p>Dramatic falls where a river tumbles straight into the Atlantic Ocean — one of the few places in the world this happens. Surrounded by rainforest, with boat and canoe rides available to get close.</p>
+              <div class="meta-row">
+                <span>📅 Dry season (Nov–Feb) for stronger flow</span>
+                <span>⏱ 2–4 hours</span>
+              </div>
+              <p class="fine-note">Boat rides negotiated separately, typically 5,000–10,000 XAF.</p>
+              <a class="map-btn" href="https://maps.google.com/?q=Limbe+Cameroon" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.EgHLPvQg_JS4T8L6BSZDvAHaE8?w=273&h=182&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Ngoye Beach">
+              <span class="price-badge">Free</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Ngoye Beach</h2>
+              <p>Kribi's central beach strip — golden sand, calm water, and a relaxed local scene with food stalls nearby.</p>
+              <div class="meta-row">
+                <span>📅 Early morning or late afternoon</span>
+                <span>⏱ 1–3 hours</span>
+              </div>
+              <p class="fine-note">Food and drinks from vendors are pay-as-you-go, at low cost.</p>
+              <a class="map-btn" href="https://maps.google.com/?q=Limbe+Cameroon" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://images.pexels.com/photos/7647984/pexels-photo-7647984.jpeg" alt="Grand Batanga">
+              <span class="price-badge">Free</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Grand Batanga</h2>
+              <p>A quiet fishing village a bit south of town, good for escaping the touristy strip and seeing everyday coastal life.</p>
+              <div class="meta-row">
+                <span>📅 Mornings, when pirogues come in</span>
+                <span>⏱ 1–2 hours</span>
+              </div>
+              <p class="fine-note">Bring cash if you want to buy fish or a meal locally.</p>
+              <a class="map-btn" href="https://maps.google.com/?q=Limbe+Cameroon" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://images.pexels.com/photos/37275663/pexels-photo-37275663.jpeg" alt="Hôtel-Restaurant Les Gîtes de Kribi">
+              <span class="price-badge">40,000–80,000 XAF/night</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Hôtel-Restaurant Les Gîtes de Kribi</h2>
+              <p>A well-regarded beachfront lodge along the road to Lobé Falls, known for its pool, jacuzzi, and sea-view restaurant — a good base for exploring rather than a sightseeing stop itself.</p>
+              <div class="meta-row">
+                <span>📅 Anytime, best in dry season</span>
+                <span>⏱ Overnight, or 1–2 hrs for lunch</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Limbe+Cameroon" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://images.pexels.com/photos/28843901/pexels-photo-28843901.jpeg" alt="Mykonos Paradise Kribi">
+              <span class="price-badge">5,000–12,000 XAF</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Mykonos Paradise Kribi</h2>
+              <p>A beachfront restaurant where you dine with your feet in the water as the sun sets over the Atlantic — string lights, fruit cocktails, and waves at your table.</p>
+              <div class="meta-row">
+                <span>📅 Sunset, around 6–6:30pm</span>
+                <span>⏱ 2–3 hours</span>
+              </div>
+              <p class="fine-note">Cocktails run roughly 3,000–5,000 XAF.</p>
+              <a class="map-btn" href="https://maps.google.com/?q=Limbe+Cameroon" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
         </div>
-      </article>
+        <div class="carousel-controls">
+          <button class="carousel-prev" type="button" aria-label="Previous">‹</button>
+          <button class="carousel-next" type="button" aria-label="Next">›</button>
+        </div>
+      </section>
 
-      <article class="card">
-        <img src="https://i.pinimg.com/1200x/52/cb/ed/52cbedee3c1b0c21ccdcf11e5d43df08.jpg" alt="Rhumsiki Peak rock formations" width="400" height="200">
-        <div class="card-body">
-          <h2>Rhumsiki Peak</h2>
-          <p class="meta">Best time to visit: October–February</p>
-          <p>A dramatic volcanic plug rising above the Mandara Mountains near the Nigerian
-             border, famous for its jagged skyline and Kapsiki villages.</p>
-          <p><a href="https://maps.google.com/?q=Rhumsiki+Peak+Cameroon" target="_blank" rel="noopener">View on Google Maps</a></p>
+      <section class="destination-carousel" id="bamenda" aria-label="Bamenda destination carousel">
+        <h3 class="region-heading">Bamenda</h3>
+        <div class="destination-slides">
+          <article class="destination-slide active">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.jwlfwlKSXkKhpEuRX8urpAHaG_?w=191&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Governor's Junction in Bamenda">
+              <span class="price-badge">Free</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Bamenda: Governor's Junction / Upstation</h2>
+              <p>The city's elevated central hub, offering sweeping views and a lively introduction to Bamenda.</p>
+              <div class="meta-row">
+                <span>📅 Early morning or late afternoon</span>
+                <span>⏱ 1–2 hours</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Governor%27s+Junction+Bamenda" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.RGIOV8Y7ek9vBeZO_FM3XgHaFi?w=276&h=207&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Mankon Fon's Palace in Bamenda">
+              <span class="price-badge">~2,000–5,000 XAF</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Bamenda: Mankon Fon's Palace</h2>
+              <p>Visit a cultural museum displaying traditional art, royal objects, and Mankon history.</p>
+              <div class="meta-row">
+                <span>📅 Weekday mornings</span>
+                <span>⏱ 1–2 hours</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Mankon+Fon%27s+Palace+Bamenda" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://media.istockphoto.com/id/92104095/photo/small-palace-with-garden.jpg?b=1&s=612x612&w=0&k=20&c=_aV8FUO8Ku-6v-j9Xkp_h6PaW-fmNuoYokCCfxUcWeI=" alt="Nkwen Fon's Palace in Bamenda">
+              <span class="price-badge">~2,000–5,000 XAF</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Bamenda: Nkwen Fon's Palace</h2>
+              <p>Ceremonial grounds that showcase local royal culture and community traditions.</p>
+              <div class="meta-row">
+                <span>📅 Morning, subject to palace access</span>
+                <span>⏱ 1 hour</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Nkwen+Fon%27s+Palace+Bamenda" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://tse2.mm.bing.net/th/id/OIP.B7qX8IVC0w1tN5H4myOrcwHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Abangoh neighborhood in Bamenda">
+              <span class="price-badge">Free</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Bamenda: Abangoh</h2>
+              <p>A quiet, flower-filled neighborhood suited to a relaxed walk and casual photography.</p>
+              <div class="meta-row">
+                <span>📅 Morning or late afternoon</span>
+                <span>⏱ 1–2 hours</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Abangoh+Bamenda" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://images.unsplash.com/photo-1494587416117-f102a2ac0a8d?auto=format&fit=crop&w=1200&q=80" alt="NTACCUL in Upstation Bamenda">
+              <span class="price-badge">Free</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Bamenda: NTACCUL (Upstation)</h2>
+              <p>A community landmark within the Upstation area and a useful stop on a cultural city tour.</p>
+              <div class="meta-row">
+                <span>📅 Daytime</span>
+                <span>⏱ 45–90 minutes</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=NTACCUL+Upstation+Bamenda" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
         </div>
-      </article>
+        <div class="carousel-controls">
+          <button class="carousel-prev" type="button" aria-label="Previous">‹</button>
+          <button class="carousel-next" type="button" aria-label="Next">›</button>
+        </div>
+      </section>
 
-      <article class="card">
-        <img src="https://th.bing.com/th/id/R.ba618c8cf336091df671df4bbab258ac?rik=qCPjxfJVbR0JTA&riu=http%3a%2f%2fgalenf.com%2fafrica%2f04%2f2010-12-26_cameroon_2415.jpg&ehk=bpuLR7b0qp0bDCEyXuMkBTWZehr45GHOrA7CCcX8wEc%3d&risl=&pid=ImgRaw&r=0" alt="Lobé Waterfalls flowing into the ocean at Kribi" width="400" height="200">
-        <div class="card-body">
-          <h2>Kribi &amp; the Lobé Waterfalls</h2>
-          <p class="meta">Best time to visit: November–February</p>
-          <p>A relaxed coastal town with golden beaches, fresh seafood, and the rare Lobé
-             Waterfalls, where a river tumbles directly into the Atlantic Ocean.</p>
-          <p><a href="https://maps.google.com/?q=Lobe+Waterfalls+Kribi" target="_blank" rel="noopener">View on Google Maps</a></p>
+      <section class="destination-carousel" id="buea" aria-label="Buea destination carousel">
+        <h3 class="region-heading">Buea</h3>
+        <div class="destination-slides">
+          <article class="destination-slide active">
+            <div class="slide-media">
+              <img src="https://tse1.mm.bing.net/th/id/OIP.4bPNEpDpRuLK-LM02EUQvQHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Golden Jubilee Monument in Buea">
+              <span class="price-badge">Free</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Buea: Golden Jubilee Monument</h2>
+              <p>A colorful reunification monument with picnic space in a clean, well-maintained setting.</p>
+              <div class="meta-row">
+                <span>📅 Morning or late afternoon</span>
+                <span>⏱ 1–2 hours</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Golden+Jubilee+Monument+Buea" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP._x-O3luSWMhrEq-ZN76KEAHaEK?w=301&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Mount Cameroon National Park near Buea">
+              <span class="price-badge">10,000–50,000 XAF</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Buea: Mount Cameroon National Park</h2>
+              <p>West Africa's highest peak, with hiking trails and dramatic views over Buea.</p>
+              <div class="meta-row">
+                <span>📅 Nov–Feb for clearer conditions</span>
+                <span>⏱ Half day to several days</span>
+              </div>
+              <p class="fine-note">Price depends on guide and route chosen.</p>
+              <a class="map-btn" href="https://maps.google.com/?q=Mount+Cameroon+National+Park+Buea" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.M5FflXzx8QsiJiWLH5hAzwHaEK?w=310&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Our Lady of Grace Shrine in Sasse">
+              <span class="price-badge">Free</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Buea: Our Lady of Grace Shrine, Sasse</h2>
+              <p>A peaceful shrine beside a waterfall, popular for quiet prayer, reflection, and nature.</p>
+              <div class="meta-row">
+                <span>📅 Dry season mornings</span>
+                <span>⏱ 1–3 hours</span>
+              </div>
+              <p class="fine-note">Donation appreciated.</p>
+              <a class="map-btn" href="https://maps.google.com/?q=Our+Lady+of+Grace+Shrine+Sasse" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.BVolxUkoWoX2ThG8BRWl5AHaEV?w=295&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Limbe Botanic Garden near Buea">
+              <span class="price-badge">~2,000–5,000 XAF</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Buea: Limbe Botanic Garden</h2>
+              <p>One of Africa's oldest botanical gardens, about 30 minutes from Buea, with tropical plant collections.</p>
+              <div class="meta-row">
+                <span>📅 Morning or late afternoon</span>
+                <span>⏱ 2–3 hours</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Limbe+Botanic+Garden" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.8iJq8YQEwPW6HWuYWG5ekAHaEL?w=277&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Mount Cameroon National Park headquarters">
+              <span class="price-badge">Varies</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Buea: Mount Cameroon National Park HQ</h2>
+              <p>A practical stop for arranging guided hikes, checking routes, and obtaining permits before heading up the mountain.</p>
+              <div class="meta-row">
+                <span>📅 Mornings, office hours</span>
+                <span>⏱ 30–90 minutes</span>
+              </div>
+              <p class="fine-note">Permit and guide fees vary by route.</p>
+              <a class="map-btn" href="https://maps.google.com/?q=Mount+Cameroon+National+Park+Headquarters+Buea" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
         </div>
-      </article>
-    </section>
+        <div class="carousel-controls">
+          <button class="carousel-prev" type="button" aria-label="Previous">‹</button>
+          <button class="carousel-next" type="button" aria-label="Next">›</button>
+        </div>
+      </section>
+
+      <section class="destination-carousel" id="bafoussam" aria-label="Bafoussam destination carousel">
+        <h3 class="region-heading">Bafoussam</h3>
+        <div class="destination-slides">
+          <article class="destination-slide active">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP._vxec3eFPE8mSVsAmG9NSgAAAA?w=201&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Lac Baleng near Bafoussam">
+              <span class="price-badge">2,000–10,000 XAF</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Bafoussam: Lac Baleng</h2>
+              <p>A striking crater lake offering canoe rides, swimming, and spiritual significance to local communities.</p>
+              <div class="meta-row">
+                <span>📅 Dry season mornings</span>
+                <span>⏱ 2–4 hours</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Lac+Baleng+Cameroon" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.NdtxX_5shS_LULqv5vEUUgHaE7?w=271&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Chefferie Bandjoun near Bafoussam">
+              <span class="price-badge">~2,000 XAF</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Bafoussam: Chefferie Bandjoun</h2>
+              <p>Explore a Bamiléké royal palace and museum with traditional architecture, art, and historical artifacts.</p>
+              <div class="meta-row">
+                <span>📅 Weekday mornings</span>
+                <span>⏱ 1–2 hours</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Chefferie+Bandjoun" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.F5KW-_bi3czqUdOnL2fY8AHaHa?w=166&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Carrefour Saint Thomas in Bafoussam">
+              <span class="price-badge">Free</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Bafoussam: Carrefour Saint Thomas</h2>
+              <p>A well-known central roundabout in the Tocket neighborhood and a useful starting point for exploring the city.</p>
+              <div class="meta-row">
+                <span>📅 Daytime</span>
+                <span>⏱ 30–60 minutes</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Carrefour+Saint+Thomas+Bafoussam" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.ny5RqTc7BXSM_eCZOQl2IwHaEK?w=301&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Carrefour Franco in Bafoussam">
+              <span class="price-badge">Free</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Bafoussam: Carrefour Franco</h2>
+              <p>A notable local landmark and junction area where you can observe the city's everyday movement.</p>
+              <div class="meta-row">
+                <span>📅 Morning or late afternoon</span>
+                <span>⏱ 30–60 minutes</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Carrefour+Franco+Bafoussam" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.gXWmZFZ-IW6K4ueIiJryGgHaFq?w=247&h=189&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Medjio à Baleng near Bafoussam">
+              <span class="price-badge">Free / small fee</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Bafoussam: Medjio à Baleng</h2>
+              <p>A nearby site worth combining with Lac Baleng for a fuller day trip around the lake area.</p>
+              <div class="meta-row">
+                <span>📅 Dry season</span>
+                <span>⏱ 1–2 hours</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Medjio+Baleng+Cameroon" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-prev" type="button" aria-label="Previous">‹</button>
+          <button class="carousel-next" type="button" aria-label="Next">›</button>
+        </div>
+      </section>
+
+      <section class="destination-carousel" id="douala" aria-label="Douala destination carousel">
+        <h3 class="region-heading">Douala</h3>
+        <div class="destination-slides">
+          <article class="destination-slide active">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.ZXInYE2hNr1QRVggHmqsgQHaE8?w=245&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Elegant architecture in Bonanjo, Douala">
+              <span class="price-badge">Free to explore</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Bonanjo heritage district</h2>
+              <p>Stroll through Douala's refined administrative quarter to see elegant colonial-era buildings, leafy avenues, and some of the city's most polished restaurants and galleries.</p>
+              <div class="meta-row">
+                <span>📅 Best in the morning</span>
+                <span>⏱ 2–3 hours</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Bonanjo+Douala+Cameroon" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.b3XBEGrJew9x1j2JejGROAHaE7?w=304&h=202&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Stylish dining atmosphere in Bonapriso, Douala">
+              <span class="price-badge">25,000 CFA / person</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Bonapriso's dining quarter</h2>
+              <p>Spend an unhurried evening in Bonapriso, known for its stylish boutiques, intimate terraces, international cuisine, and lively cocktail scene after sunset.</p>
+              <div class="meta-row">
+                <span>📅 Evenings</span>
+                <span>⏱ 3–4 hours</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Bonapriso+Douala+Cameroon" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.suJbu_AB2BedArbqFF9lowHaFj?w=241&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="The Pagoda landmark in Douala">
+              <span class="price-badge">5,000–15,000 CFA / person</span>
+            </div>
+            <div class="destination-copy">
+              <h2>La Pagode</h2>
+              <p>Admire La Pagode, one of Douala's most distinctive historic landmarks, then linger around Akwa to discover independent shops, cafés, and the city's urban energy.</p>
+              <div class="meta-row">
+                <span>📅 Dry-season afternoons</span>
+                <span>⏱ 1–2 hours</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=La+Pagode+Douala+Cameroon" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.J4fAxVx2tiFEttgPkxi8nwHaE8?w=245&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Contemporary art exhibition at Doual'art">
+              <span class="price-badge">5,000–20,000 CFA / person</span>
+            </div>
+            <div class="destination-copy">
+              <h2>Doual'art contemporary gallery</h2>
+              <p>Meet Cameroon's contemporary creative scene at Doual'art, a thoughtful cultural stop for sculpture, photography, installations, and locally rooted exhibitions.</p>
+              <div class="meta-row">
+                <span>📅 Check exhibition hours</span>
+                <span>⏱ 1–2 hours</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Doual'art+Douala+Cameroon" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+          <article class="destination-slide">
+            <div class="slide-media">
+              <img src="https://th.bing.com/th/id/OIP.ZZSp48tz3X85-ZGyt3xnKwHaEJ?w=289&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Sunset over the Wouri waterfront in Douala">
+              <span class="price-badge">free </span>
+            </div>
+            <div class="destination-copy">
+              <h2>Wouri riverfront at sunset</h2>
+              <p>End the day beside the Wouri with a relaxed riverside drink or dinner, watching the city's lights come alive across Douala's broad and breezy waterfront.</p>
+              <div class="meta-row">
+                <span>📅 Around sunset</span>
+                <span>⏱ 2–3 hours</span>
+              </div>
+              <a class="map-btn" href="https://maps.google.com/?q=Wouri+River+Douala+Cameroon" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </article>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-prev" type="button" aria-label="Previous">‹</button>
+          <button class="carousel-next" type="button" aria-label="Next">›</button>
+        </div>
+      </section>
+
+    </div>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Explore Cameroon. All rights reserved.</p>
-    <p><a href="contact.html">Contact Us</a></p>
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">Explore Cameroon</div>
+        <p>Individual or small-group travels across Cameroon’s coast, rainforests, grassfields, and sahel north, planned by people based in each region.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Regions</h4>
+        <ul>
+          <li><a href="https://en.wikipedia.org/wiki/Geography_of_Cameroon">The Coast</a></li>
+          <li><a href="https://www.britannica.com/place/Cameroon/Plant-and-animal-life">Rainforests</a></li>
+          <li><a href="https://fr.wikipedia.org/wiki/Grassland_(Cameroun)">Grassfields</a></li>
+          <li><a href="https://fr.wikipedia.org/wiki/Sahel_(Cameroun)">Sahel north</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://en.wikipedia.org/wiki/Cameroon">About Cameroon</a></li>
+          <li><a href="https://www.camerooncarrentals.com/cameroon-divers-on-hire-douala-and-yaounde/">Our drivers</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Plan a trip</h4>
+        <ul>
+          <li><a href="https://globalbushtratour.com/blog/getting-around-cameroon-a-complete-transport-guide">Fixed Routes</a></li>
+          <li><a href="https://www.rome2rio.com/s/Cameroon">Custom Itinerary</a></li>
+          <li><a href="group-bookings.html">Group / single bookings</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p><span>2026 Explore Cameroon. All rights reserved.</span></p>
+      <p>
+        <a href="contact.html">Contact us</a> |
+        <a href="https://www.instagram.com/travelcameroon/">Follow us on Instagram</a> |
+        <a href="https://web.facebook.com/photo/?fbid=551495800106655&set=a.551495750106660">Follow us on Facebook</a>
+      </p>
+    </div>
   </footer>
+
+  <script>
+    document.querySelectorAll('.destination-carousel').forEach((carousel) => {
+      const slides = carousel.querySelectorAll('.destination-slide');
+      const prevBtn = carousel.querySelector('.carousel-prev');
+      const nextBtn = carousel.querySelector('.carousel-next');
+      let currentSlide = 0;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === index);
+        });
+      }
+
+      prevBtn.addEventListener('click', () => {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      });
+
+      nextBtn.addEventListener('click', () => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      });
+
+      showSlide(currentSlide);
+    });
+  </script>
 
 </body>
 </html>

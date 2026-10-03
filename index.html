@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width= , initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore Cameroon| Home</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
@@ -10,73 +10,327 @@
             text-align: right;
             padding: 15px;
         }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            background:
+                url('https://th.bing.com/th/id/OIP.0WQzQ44d6bW07-KYefPXNAHaEJ?w=322&h=181&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3') center center / cover no-repeat fixed;
+            background-color: #dfe7d2;
+        }
+
+        .section {
+            max-width: 1100px;
+            margin: 0 auto 80px auto;
+            padding: 0 20px;
+        }
+
+        h2.section-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 400;
+            color: #05460b;
+            margin-bottom: 50px;
+        }
+
+        
+        .testimonials {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            flex-wrap: nowrap;
+        }
+
+        .testimonial {
+            flex: 1;
+            text-align: center;
+        }
+
+        .testimonial img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .testimonial .name {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #05460b;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .testimonial p.quote {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .testimonial a.read-more {
+            font-size: 13px;
+            color: rgb(10, 10, 10);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .testimonial a.read-more:hover {
+            text-decoration: underline;
+        }
+
+        .full-story {
+            display: none;
+            text-align: left;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #555;
+            background: #f7f7f7;
+            padding: 15px 18px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+
+        .full-story.open {
+            display: block;
+        }
+
+        /* ---------- Feature grid ---------- */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .feature-icon {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #05460b;
+        }
+
+        .feature h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #05460b;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        @media (max-width: 800px) {
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+            .testimonials {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* ---------- Featured Destinations ---------- */
+        #featured {
+            background: #e4f88c;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        #featured h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+        }
+
+        #featured .featured-subtitle {
+            max-width: 550px;
+            margin: 0 auto 40px auto;
+            color: #555;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .card-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: #fff;
+            border-top: 5px solid green;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .card-body h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 12px 0;
+        }
+
+        .card-body p {
+            display: none;
+        }
+
+        .card-body a {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #e80a0a;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 800px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="site title"><strong>Discover Cameroon</strong></div>
+    <header class="site-header">
+        <div class="logo">
+            <img src="https://th.bing.com/th/id/OIP.Ls9zZM14tyIjEVGBWacheQHaHa?w=128&h=150&c=6&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Cameroon Logo" width="100" height="100">
+        </div>
+        <div class="header-inner"></div>
+        <div class="site-title"><strong>Discover Cameroon</strong></div>
         <div class="tagline">Africa in Miniature - one country, every landscape.</div>
-         </header>
-         <br>
-         <br>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="destinations.html">Destinations</a>
-            <a href="activities.html">Activities</a>
-            <a href="packages.html">Travel Packages</a>
-            <a href="contact.html">Contact Us</a>
+        <br>
+        <br>
+
+        <nav class="site-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="packages.html">Travel Packages</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
         </nav>
-        <div class="banner">
-            <img src="https://tse2.mm.bing.net/th/id/OIP.UvAhYQNnQ-Qbt8FgGi771gHaFj?r=0&pid=ImgDet&w=474&h=355&rs=1&o=7&rm=3" alt="Beautiful Scenery of Cameroon" width="400" height="200">
-            <div class="banner-text">
-                <h1>Welcome to Cameroon</h1>
-                <p>Rain forests, savannahs, beaches, volcanoes and 250+ cultures all in one country.</p>
-            </div>
+    </header>
+    <div class="banner">
+        <img src="https://i.pinimg.com/736x/81/f0/7a/81f07aed8e1f9d01d58e42743d046c19--traveling-africa.jpg" alt="Beautiful Scenery of Cameroon" width="400" height="200">
+        <div class="banner-text">
+            <h1>Welcome to Cameroon</h1>
+            <p>Rain forests, savannahs, beaches, volcanoes and 250+ cultures all in one country.</p>
         </div>
-<main>
-    <section id="Welcome">
-       <h2><b>Welcome</b></h2>
-    
-        <p>Welcome to <strong>Discover Cameroon</strong>!.  Cameroon is known as "Africa in Miniature" because ithas almost every type of landscape found across the african continent.
-        From beautiful beaches and mountains to waterfalls, rainforests, wildlife, and vibrant cultures, Cameroon offers unforgetable travel experiences wether you are a nature lover, adventure seeker, or cultural enthusiast.</p>
-        <p>
-            Browse our site to explore top destinations, exiting activities, curated travel packages, and get in touch with our team to start planning your next Cameroon adventure.
-        </p>
-    </section>
-    <br>
-    <section id="intro">
-<h2>Why Visit Cameroon?</h2>
+    </div>
+    <main>
+        <section id="Welcome">
+            <h2><b>Welcome</b></h2>
 
-<P>
-Cameroon is a country of diverse landscapes, rich culture, and warm hospitality. From the bustling cities to the serene black-sand beaches, Cameroon offers a unique blend of experiences for travelers. Whether you are looking for adventure, relaxation, or cultural immersion, Cameroon has something for everyone.
-Learn more on <a href="https://en.wikipedia.org/wiki/Cameroon" target="_blank">Wikipedia</a> or visit the <a href="https://mintoul.gov.cm/the-ministry/" target="_blank">Ministry of Tourism and leisure</a>
-</P>
-    </section>
-    <section id="featured">
-        <h2>Featured Destinations</h2>
-        <div class="card-grid">
-            <div class="card">
-        
-            <img src="https://static.wixstatic.com/media/f170bc_2422b8ff49d048b68120617f1b0b965d~mv2.jpg/v1/fill/w_1000,h_750,al_c,q_85,usm_0.66_1.00_0.01/f170bc_2422b8ff49d048b68120617f1b0b965d~mv2.jpg" alt="Mount Cameroon" width="400" height="200">
-            <div class="card body">
-                <h3>Mount Cameroon</h3>
-
-            <p>The highest mountain in West and Central Africa, famous for hiking, breathtaking scenery, and the annual Race of Hope</p>
-            <a href="https://www.getyourguide.com/s/?q=mount+cameroon&searchSource=8&src=search_bar&adults=1" target="_blank">Learn More</a>
+            <p>Welcome to <strong>Discover Cameroon</strong>!.  Cameroon is known as "Africa in Miniature" because it has almost every type of landscape found across the african continent.
+            From beautiful beaches and mountains to waterfalls, rainforests, wildlife, and vibrant cultures, Cameroon offers unforgetable travel experiences wether you are a nature lover, adventure seeker, or cultural enthusiast.</p>
+            <p>
+                Browse our site to explore top destinations, exiting activities, curated travel packages, and get in touch with our team to start planning your next Cameroon adventure.
+            </p>
+        </section>
+        <br>
+        <section id="featured">
+            <h2>Destinations to Inspire Adventure</h2>
+            <p class="featured-subtitle">From misty mountain trails to white-sand beaches, here are a few of the places that make Cameroon unforgettable.</p>
+            <div class="card-grid">
+                <div class="card">
+                    <img src="https://static.wixstatic.com/media/f170bc_2422b8ff49d048b68120617f1b0b965d~mv2.jpg/v1/fill/w_1000,h_750,al_c,q_85,usm_0.66_1.00_0.01/f170bc_2422b8ff49d048b68120617f1b0b965d~mv2.jpg" alt="Mount Cameroon" width="400" height="200">
+                    <div class="card-body">
+                        <h3>Mount Cameroon</h3>
+                        <a href="https://www.getyourguide.com/s/?q=mount+cameroon&searchSource=8&src=search_bar&adults=1" target="_blank">More</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://i.pinimg.com/1200x/a6/f1/7f/a6f17feb250e4fb930c29179c1e4cf21.jpg" alt="Limbe Beach" width="400" height="200">
+                    <div class="card-body">
+                        <h3>Limbe Beach</h3>
+                        <p>Experience the pristine beauty of Limbe Beach, where turquoise waters meet golden sands.</p>
+                        <a href="https://www.getyourguide.com/s/?q=limbe+beach&searchSource=8&src=search_bar&adults=1">More</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://tse2.mm.bing.net/th/id/OIP.u-QUk2KNWGLP3AUzKOqLiAHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Kribi" width="400" height="200">
+                    <div class="card-body">
+                        <h3>Kribi</h3>
+                        <a href="https://www.getyourguide.com/s/?q=kribi&searchSource=8&src=search_bar&adults=1">More</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/6796901/pexels-photo-6796901.jpeg" alt="Waza National Park" width="400" height="200">
+                    <div class="card-body">
+                        <h3>Waza National Park</h3>
+                        <a href="https://www.getyourguide.com/s/?q=waza+national+park&searchSource=8&src=search_bar&adults=1">More</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://media.istockphoto.com/id/1163910116/photo/cattle-grazing-near-rock-formations.jpg?b=1&s=612x612&w=0&k=20&c=k9VwlyFi7EddpsSIJBQnV1NdS_63iSWIahqi_D2zk5M=" alt="Rhumsiki" width="400" height="200">
+                    <div class="card-body">
+                        <h3>Rhumsiki</h3>
+                        <a href="https://www.getyourguide.com/s/?q=rhumsiki&searchSource=8&src=search_bar&adults=1">More</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/33797765/pexels-photo-33797765.jpeg" alt="Foumban Royal Palace" width="400" height="200">
+                    <div class="card-body">
+                        <h3>Foumban</h3>
+                        <a href="https://www.getyourguide.com/s/?q=foumban&searchSource=8&src=search_bar&adults=1">More</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://media.istockphoto.com/id/1328860707/photo/beautiful-view-of-douala-at-sunset.jpg?b=1&s=612x612&w=0&k=20&c=5h6OermSjM2af5pguYUdUo04PC1kzDgq0hWsrMF0lqM=" alt="Douala" width="400" height="200">
+                    <div class="card-body">
+                        <h3>Douala</h3>
+                        <a href="https://www.getyourguide.com/s/?q=douala&searchSource=8&src=search_bar&adults=1">More</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/17290974/pexels-photo-17290974.jpeg" alt="Yaoundé" width="400" height="200">
+                    <div class="card-body">
+                        <h3>Yaoundé</h3>
+                        <a href="https://www.getyourguide.com/s/?q=yaounde&searchSource=8&src=search_bar&adults=1">More</a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <img src="https://i.pinimg.com/1200x/a6/f1/7f/a6f17feb250e4fb930c29179c1e4cf21.jpg"alt="Kribi Beach" width="400" height="200">
-            <div class="card-body".>
-            <h3>Limbe Beach</h3>
-            <p>One of Cameroon's most beautiful beaches with white sand, fresh seafood, and relaxing ocean views.</p>
-            <a href="https://www.getyourguide.com/s/?q=limbe+beach&searchSource=8&src=search_bar&adults=1">learn more</a>
-            </div>
-        </div>
-    </section>
-        
+        </section>
+        <button class="nav-toggle" aria-label="toggle navigation" aria-expanded="false"><a href="destinations.html">Explore Destinations</a></button>
+        <br>
         <hr>
-        <section>
+        <section class="why-visit">
             <h2>Why Visit Cameroon?</h2>
             <ul>
                 <li>Beautiful beaches and waterfalls.</li>
@@ -86,21 +340,129 @@ Learn more on <a href="https://en.wikipedia.org/wiki/Cameroon" target="_blank">W
                 <li>Friendly people and unique traditions</li>
             </ul>
         </section>
-</main>
-<section id="video">
-    <h2>Watch: A Glimpse of Cameroon</h2>
-    <div class="video-wrap">
-        <iframe src="https://www.bing.com/ck/a?!&&p=9c8e5890991fab0b3a8152b6dbfd1f33c93ef128ab0ccffa1b6fc228f57d2616JmltdHM9MTc4NjU3OTIwMA&ptn=3&ver=2&hsh=4&fclid=3c80109b-76c9-6784-01ef-04667761667c&u=a1L3ZpZGVvcy9yaXZlcnZpZXcvcmVsYXRlZHZpZGVvP3E9ZXhwbG9yZStjYW1lcm9vbit5b3V0dWJlK3ZpZGVvJm1pZD03NTlDNEMzRTRGMTg0RkM3OEQxRjc1OUM0QzNFNEYxODRGQzc4RDFGJmNodXJsPWh0dHBzJTNhJTJmJTJmd3d3LnlvdXR1YmUuY29tJTJmY2hhbm5lbCUyZlVDMS03bUEwbUtzQ1R5Q01HNEpOTzNFUSZGT1JNPVZJUkU" title="Cameroon tour video" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;caption;picture-in-picture" allowfullscreen></iframe>
-    </div>
-</section>
-<hr>
-<footer>
-    <p>2026 Explore Cameroon. @All rights reserved</p>
-    <p>
-        <a href="https://www.businesslist.co.cm/company/138366/sky-trust-travel-agency">contact us</a>
-        <a href="https://www.instagram.com/travelcameroon/">Follow us on Instagram</a>
-        <a href="https://web.facebook.com/photo/?fbid=551495800106655&set=a.551495750106660">Follow us on Facebook</a>
-    </p>
-</footer>
+    </main>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+        <h2 class="section-title">Stories from our Travelers</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Traveler photo">
+                <div class="name">James smith, Solo Backpacker</div>
+                <p class="quote">"This platform helped me plan a three-country trip in under an hour. The itinerary tools saved me so much time."</p>
+                <a class="read-more" href="#" onclick="toggleStory(event, 'story-1')">Read their story </a>
+                <div class="full-story" id="story-1">
+                    James set out to backpack through three countries in six weeks on a tight budget. Using the itinerary builder, she mapped out bus routes, budget stays, and local guides before she even landed. "I used to spend entire evenings on five different tabs just to plan one leg of a trip. Here it was all in one place, and I could adjust things on the fly when a route fell through." She's since planned two more trips through the platform and now recommends it to every traveler she meets.
+                </div>
+            </div>
+            <div class="testimonial">
+                <img src="https://images.pexels.com/photos/37424324/pexels-photo-37424324.jpeg" alt="Traveler photo">
+                <div class="name">Tamiya Cooper, Family Traveler</div>
+                <p class="quote">"Booking for a family of five used to be a headache. Now we compare, book, and track everything in one place."</p>
+                <a class="read-more" href="#" onclick="toggleStory(event, 'story-2')">Read their story </a>
+                <div class="full-story" id="story-2">
+                    With three kids and different schedules to juggle, Tamiya used to dread family trip planning. "Every site handled flights differently from hotels, and none of them talked to each other." Since switching, he books flights, family-friendly stays, and activities from a single dashboard, with all confirmations and changes tracked automatically. He says it's cut his planning time by more than half.
+                </div>
+            </div>
+            <div class="testimonial">
+                <img src="https://media.istockphoto.com/id/1335941248/photo/shot-of-a-handsome-young-man-standing-against-a-grey-background.jpg?b=1&s=612x612&w=0&k=20&c=07SAQPb33q39bTswXx3DsQWU0Mwnuvs2GxigTlLo9Lg=" alt="Traveler photo">
+                <div class="name">Spencer James, Adventure Guide</div>
+                <p class="quote">"Our clients love how easy it is to browse local experiences. It's brought us more bookings than any other channel."</p>
+                <a class="read-more" href="#" onclick="toggleStory(event, 'story-3')">Read their story </a>
+                <div class="full-story" id="story-3">
+                    Spencer runs a small adventure tour business and struggled to get visibility beyond word of mouth. After listing his experiences on the platform, bookings from new travelers picked up within weeks. "People can see real photos, real reviews, and book instantly. It's brought us more first-time clients than any marketing we've paid for." He now lists all of his guided hikes and cultural tours through the platform.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section travel-love">
+        <h2 class="section-title">Why you'll love traveling with us</h2>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">✈</div>
+                <h3>Real trips, not just listings</h3>
+                <p>Travelers want more than a booking page. We connect you to real itineraries and local experiences that fit your goals.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">$</div>
+                <h3>Lower costs, better trips</h3>
+                <p>Skip the middlemen. Compare prices across providers and keep more of your budget for the experience itself.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🗺</div>
+                <h3>Plan it your way</h3>
+                <p>No rigid packages. Build your own route, mix accommodations and activities, and adjust as your plans change.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🛈</div>
+                <h3>Support when you need it</h3>
+                <p>No more worrying about delays or last-minute changes — our support team is on call throughout your trip.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-band">
+        <div class="wrap"></div>
+        <h2>Tell us your dates. We'll build the route.</h2>
+        <button><a href="contact.html" class="btn-primary">Start Planning</a></button>
+    </section>
+
+    <section id="video">
+        <h2>Watch: A Glimpse of Cameroon</h2>
+        <div class="video-wrap">
+            <iframe src="https://www.bing.com/ck/a?!&&p=9c8e5890991fab0b3a8152b6dbfd1f33c93ef128ab0ccffa1b6fc228f57d2616JmltdHM9MTc4NjU3OTIwMA&ptn=3&ver=2&hsh=4&fclid=3c80109b-76c9-6784-01ef-04667761667c&u=a1L3ZpZGVvcy9yaXZlcnZpZXcvcmVsYXRlZHZpZGVvP3E9ZXhwbG9yZStjYW1lcm9vbit5b3V0dWJlK3ZpZGVvJm1pZD03NTlDNEMzRTRGMTg0RkM3OEQxRjc1OUM0QzNFNEYxODRGQzc4RDFGJmNodXJsPWh0dHBzJTNhJTJmJTJmd3d3LnlvdXR1YmUuY29tJTJmY2hhbm5lbCUyZlVDMS03bUEwbUtzQ1R5Q01HNEpOTzNFUSZGT1JNPVZJUkU" title="Cameroon tour video" width="400" height="200" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;caption;picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+    <hr>
+    <footer>
+        <div class="wrap"></div>
+        <div class="footer-grid"></div>
+        <div class="logo">Explore Cameroon</div>
+        <p>Individual or small-group travels across Cameroon's coast, rainforests, grassfields, and sahel north, planned by people based in each region</p>
+        <div class="footer-col">
+            <h4 align="left">Regions</h4>
+            <li align="left">
+                <ul><a href="https://en.wikipedia.org/wiki/Geography_of_Cameroon">The Coast</a></ul>
+                <ul><a href="https://www.britannica.com/place/Cameroon/Plant-and-animal-life">Rainforests</a></ul>
+                <ul><a href="https://fr.wikipedia.org/wiki/Grassland_(Cameroun)">Grassfields</a></ul>
+                <ul><a href="https://fr.wikipedia.org/wiki/Sahel_(Cameroun)">Sahel north</a></ul>
+            </li>
+        </div>
+        <div class="footer-col">
+            <h4 align="left">Company</h4>
+            <li align="left">
+                <ul><a href="https://en.wikipedia.org/wiki/Cameroon">About Cameroon</a></ul>
+                <ul><a href="https://www.camerooncarrentals.com/cameroon-divers-on-hire-douala-and-yaounde/">Our drivers</a></ul>
+                <ul><a href="contact.html">Contact us</a></ul>
+            </li>
+        </div>
+        <div class="footer-col">
+            <h4 align="left">Plan a trip</h4>
+            <li align="left">
+                <ul><a href="https://globalbushtratour.com/blog/getting-around-cameroon-a-complete-transport-guide">Fixed Routes</a></ul>
+                <ul><a href="https://www.rome2rio.com/s/Cameroon?msclkid=90dcb52d25111443232adfbac829d62f&utm_source=bing&utm_medium=cpc&utm_campaign=MADS_SEM_AFRICA_EN_ALL_cDSA_GEN_INT&utm_term=%2Fs%2F&utm_content=DSA_GEN_EN_INT">Custom Itinerary</a></ul>
+                <ul><a href="group-bookings.html">Group/ single bookings</a></ul>
+            </li>
+        </div>
+        <div class="footer-bottom">
+            <p><span>2026 Explore Cameroon. @All rights reserved</span></p>
+            <span>prices shown in XAF, Per person, groups</span>
+            <p>
+                <a href="https://www.businesslist.co.cm/company/138366/sky-trust-travel-agency">contact us</a>
+                <a href="https://www.instagram.com/travelcameroon/">Follow us on Instagram</a>
+                <a href="https://web.facebook.com/photo/?fbid=551495800106655&set=a.551495750106660">Follow us on Facebook</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleStory(event, id) {
+            event.preventDefault();
+            var story = document.getElementById(id);
+            story.classList.toggle('open');
+        }
+    </script>
 </body>
 </html>
